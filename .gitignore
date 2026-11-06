@@ -4,3 +4,4 @@ dist/
 *.app/
 *.iconset/
 *.test
+publish.sh
