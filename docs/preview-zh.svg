@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="oMLX 状态浮窗预览">
+  <defs>
+    <linearGradient id="desktop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef3f9"/>
+      <stop offset="0.55" stop-color="#e2eaf4"/>
+      <stop offset="1" stop-color="#d5e2ef"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.2" cy="0.15" r="0.6">
+      <stop offset="0" stop-color="#8fd6ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#8fd6ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.85" cy="0.8" r="0.6">
+      <stop offset="0" stop-color="#7ff0dc" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#7ff0dc" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0b2233" flood-opacity="0.28"/>
+    </filter>
+    <style>
+      text { font-family: -apple-system, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", sans-serif; }
+      .head { font-size: 13px; font-weight: 600; fill: #ffffff; }
+      .headMeta { font-size: 12px; font-weight: 500; fill: rgba(255,255,255,0.84); }
+      .name { font-size: 13px; font-weight: 600; fill: #ffffff; }
+      .body { font-size: 12px; font-weight: 500; fill: #ffffff; }
+      .meta { font-size: 11px; font-weight: 400; fill: rgba(255,255,255,0.84); }
+      .btn { font-size: 16px; font-weight: 500; fill: rgba(255,255,255,0.92); }
+      .caption { font-size: 12px; fill: #5b7285; }
+    </style>
+  </defs>
+
+  <rect width="720" height="300" fill="url(#desktop)"/>
+  <rect width="720" height="300" fill="url(#glowA)"/>
+  <rect width="720" height="300" fill="url(#glowB)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="56" y="70" width="448" height="127" rx="10" fill="#0d1b26" fill-opacity="0.74"/>
+  </g>
+
+  <circle cx="66" cy="91" r="3.2" fill="#8CF9DE"/>
+  <text class="head" x="74" y="95">oMLX 实时状态</text>
+  <text class="headMeta" x="440" y="95" text-anchor="end">活跃 1 · 等待 0</text>
+  <text class="btn" x="452" y="96">⋯</text>
+  <text class="btn" x="479" y="96">×</text>
+
+  <text class="name" x="66" y="121">Qwen3.8-Flash-Next-oQ3e-mtp</text>
+  <text class="body" x="66" y="141">生成中  ·  1,248 tok  ·  63.8 tok/s  ·  19.6 s</text>
+  <text class="meta" x="66" y="160">56.85GB 实测  /  90.52GB 估算</text>
+  <text class="body" x="66" y="183">进程内存 74.6GB  /  软限 90.0GB  /  硬限 97.0GB</text>
+
+  <text class="caption" x="56" y="236">本机 oMLX 的透明常驻悬浮窗，实时显示生成速度、请求队列与内存上限。</text>
+</svg>

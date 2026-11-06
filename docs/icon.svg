@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="512" height="512" role="img" aria-label="oMLX Status HUD icon">
+  <defs>
+    <linearGradient id="tile" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#0A2340"/>
+      <stop offset="0.55" stop-color="#14687C"/>
+      <stop offset="1" stop-color="#2EBDAC"/>
+    </linearGradient>
+    <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4FFFE"/>
+      <stop offset="1" stop-color="#D6F4F0"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#092741"/>
+      <stop offset="1" stop-color="#123E55"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A2F6E8"/>
+      <stop offset="1" stop-color="#52D4C4"/>
+    </linearGradient>
+    <filter id="drop" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#071630" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#drop)">
+    <rect x="76" y="76" width="872" height="872" rx="205" fill="url(#tile)"/>
+  </g>
+  <rect x="90" y="90" width="844" height="844" rx="192" fill="none" stroke="#ffffff" stroke-opacity="0.20" stroke-width="4"/>
+
+  <rect x="183" y="240" width="658" height="520" rx="82" fill="url(#bezel)"/>
+  <rect x="209" y="300" width="606" height="434" rx="58" fill="url(#screen)"/>
+  <rect x="209" y="300" width="606" height="434" rx="58" fill="none" stroke="#C8FFF7" stroke-opacity="0.17" stroke-width="3"/>
+
+  <g stroke="#66E5D0" stroke-width="13" stroke-linecap="round">
+    <line x1="442" y1="336" x2="442" y2="350"/>
+    <line x1="489" y1="336" x2="489" y2="350"/>
+    <line x1="536" y1="336" x2="536" y2="350"/>
+    <line x1="583" y1="336" x2="583" y2="350"/>
+    <line x1="442" y1="554" x2="442" y2="568"/>
+    <line x1="489" y1="554" x2="489" y2="568"/>
+    <line x1="536" y1="554" x2="536" y2="568"/>
+    <line x1="583" y1="554" x2="583" y2="568"/>
+    <line x1="380" y1="394" x2="394" y2="394"/>
+    <line x1="380" y1="433" x2="394" y2="433"/>
+    <line x1="380" y1="472" x2="394" y2="472"/>
+    <line x1="380" y1="511" x2="394" y2="511"/>
+    <line x1="630" y1="394" x2="644" y2="394"/>
+    <line x1="630" y1="433" x2="644" y2="433"/>
+    <line x1="630" y1="472" x2="644" y2="472"/>
+    <line x1="630" y1="511" x2="644" y2="511"/>
+  </g>
+
+  <rect x="394" y="350" width="236" height="204" rx="36" fill="#66E5D0"/>
+  <rect x="417" y="373" width="190" height="158" rx="23" fill="#0C3D51"/>
+  <rect x="464" y="407" width="96" height="90" rx="20" fill="url(#core)"/>
+
+  <path d="M481 452 H497 L507 431 L519 474 L530 452 H545"
+        fill="none" stroke="#16485B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M253 650 H315 L345 610 L385 682 L428 635 L479 664 L531 627 L578 649 H637"
+        fill="none" stroke="#77F2DC" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="729" cy="651" r="24" fill="#8CF9DE"/>
+</svg>
