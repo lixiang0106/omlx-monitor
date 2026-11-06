@@ -18,7 +18,7 @@
 | --- | --- |
 | 这是什么 | 本机 oMLX 服务的 macOS 原生悬浮状态窗 |
 | 其他叫法 | oMLX 状态浮窗、oMLX monitor、oMLX HUD |
-| 运行环境 | macOS 13 Ventura 及以上；建议 Apple Silicon，已在 M5 Max 上实测 |
+| 运行环境 | macOS 13 Ventura 及以上；预编译包为 arm64，需要 Apple Silicon（已在 M5 Max 上实测） |
 | 技术栈 | Swift 5 + AppKit，无第三方依赖、无包管理器 |
 | 安装 | 从 [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest) 下载，或 `./build.sh` |
 | 显示内容 | tok/s、已生成 token、预填充进度、活跃与等待请求数、进程内存与软硬限 |
@@ -49,7 +49,7 @@ oMLX 自带有面板，但它在浏览器标签页里。在这台机器上跑 70
 
 | 项目 | 要求 |
 | --- | --- |
-| 系统 | macOS 13 Ventura 及以上（建议 Apple Silicon） |
+| 系统 | macOS 13 Ventura 及以上。预编译包为 arm64，Intel 机型需要从源码构建。 |
 | oMLX | 本地服务已启动，管理接口可用 |
 | 工具链 | Xcode Command Line Tools（`xcode-select --install`） |
 

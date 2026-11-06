@@ -18,7 +18,7 @@
 | --- | --- |
 | What it is | A native macOS floating status card for a local oMLX server |
 | Also called | oMLX 状态浮窗, oMLX monitor, oMLX HUD |
-| Runs on | macOS 13 Ventura or later; Apple Silicon recommended, tested on M5 Max |
+| Runs on | macOS 13 Ventura or later; the prebuilt download is arm64, so Apple Silicon is required (tested on M5 Max) |
 | Written in | Swift 5 with AppKit — no third-party dependencies, no package manager |
 | Install | Download from [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest), or `./build.sh` |
 | Shows | tokens/s, generated tokens, prefill progress, active and waiting requests, process memory against soft and hard limits |
@@ -49,7 +49,7 @@ Switching tabs to answer them costs more than the answer is worth. This HUD keep
 
 | Item | Requirement |
 | --- | --- |
-| macOS | 13 Ventura or later (Apple Silicon recommended) |
+| macOS | 13 Ventura or later. The prebuilt download is arm64-only; Intel Macs must build from source. |
 | oMLX | A running local server with the admin API enabled |
 | Toolchain | Xcode Command Line Tools (`xcode-select --install`) |
 
