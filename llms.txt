@@ -41,6 +41,12 @@ The HUD never sends inference requests, never writes to the oMLX configuration, 
 
 ## Install
 
+Download the prebuilt application from the latest release:
+
+https://github.com/lixiang0106/omlx-monitor/releases/latest
+
+or build it from source:
+
 ```bash
 git clone https://github.com/lixiang0106/omlx-monitor.git
 cd omlx-monitor
@@ -48,7 +54,7 @@ cd omlx-monitor
 open "dist/oMLX Status HUD.app"
 ```
 
-Requires the Xcode Command Line Tools. The build compiles one Swift file, renders the application icon, signs the bundle ad-hoc, and runs an offline self-test.
+The build requires the Xcode Command Line Tools. It compiles one Swift file, renders the application icon, signs the bundle ad-hoc, and runs an offline self-test. The prebuilt bundle is ad-hoc signed, not notarised; first launch requires confirming the Gatekeeper prompt.
 
 ## Limitations
 

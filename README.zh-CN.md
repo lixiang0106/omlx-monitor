@@ -7,6 +7,7 @@
 [![macOS 13+](https://img.shields.io/badge/macOS-13%2B-111111?logo=apple&logoColor=white)](#环境要求)
 [![Swift](https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white)](#环境要求)
 [![无第三方依赖](https://img.shields.io/badge/依赖-无-2EBDAC)](#环境要求)
+[![下载](https://img.shields.io/github/v/release/lixiang0106/omlx-monitor?label=下载&color=2EBDAC)](https://github.com/lixiang0106/omlx-monitor/releases/latest)
 [![MIT 许可](https://img.shields.io/badge/许可-MIT-blue)](LICENSE)
 
 ![oMLX 状态浮窗预览](docs/preview-zh.svg)
@@ -19,7 +20,7 @@
 | 其他叫法 | oMLX 状态浮窗、oMLX monitor、oMLX HUD |
 | 运行环境 | macOS 13 Ventura 及以上；建议 Apple Silicon，已在 M5 Max 上实测 |
 | 技术栈 | Swift 5 + AppKit，无第三方依赖、无包管理器 |
-| 安装 | `./build.sh`，然后打开 `dist/oMLX Status HUD.app` |
+| 安装 | 从 [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest) 下载，或 `./build.sh` |
 | 显示内容 | tok/s、已生成 token、预填充进度、活跃与等待请求数、进程内存与软硬限 |
 | 数据来源 | `GET http://127.0.0.1:<端口>/admin/api/activity`，只读，每 2 秒一次 |
 | 前置条件 | 本机 oMLX 服务已启动，管理接口可用 |
@@ -56,6 +57,20 @@ oMLX 自带有面板，但它在浏览器标签页里。在这台机器上跑 70
 
 ## 安装
 
+### 直接下载（最快）
+
+1. 从 [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest) 下载 `oMLX-Status-HUD-1.1.0.zip` 并解压
+2. 把 `oMLX Status HUD.app` 拖进「应用程序」
+3. 首次打开：右键点应用 → **打开**
+
+**关于 Gatekeeper。** 应用使用 ad-hoc 签名，没有经过公证。首次启动时 macOS 可能提示无法验证开发者，右键点击应用 → **打开** → **打开** 即可；也可以清除隔离标记：
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/oMLX Status HUD.app"
+```
+
+### 从源码构建
+
 ```bash
 git clone https://github.com/lixiang0106/omlx-monitor.git
 cd omlx-monitor
@@ -65,13 +80,7 @@ open "dist/oMLX Status HUD.app"
 
 构建耗时数秒，结束前会跑一遍离线自检。产物是完整的 `.app`，没有运行时依赖，也不需要单独管理图标资源。
 
-**关于 Gatekeeper。** 应用使用 ad-hoc 签名，没有经过公证。首次启动时 macOS 可能提示无法验证开发者，右键点击应用 → **打开** → **打开** 即可；也可以清除隔离标记：
-
-```bash
-xattr -dr com.apple.quarantine "dist/oMLX Status HUD.app"
-```
-
-需要开机自启时，把应用放进 `/Applications`，再到 **系统设置 → 通用 → 登录项** 里添加。浮窗本身不会写入任何自启配置。
+需要开机自启时，在 **系统设置 → 通用 → 登录项** 里添加该应用。浮窗本身不会写入任何自启配置。
 
 ## 使用方法
 

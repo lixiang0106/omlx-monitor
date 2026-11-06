@@ -7,6 +7,7 @@
 [![macOS 13+](https://img.shields.io/badge/macOS-13%2B-111111?logo=apple&logoColor=white)](#requirements)
 [![Swift](https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white)](#requirements)
 [![No dependencies](https://img.shields.io/badge/dependencies-none-2EBDAC)](#requirements)
+[![Download](https://img.shields.io/github/v/release/lixiang0106/omlx-monitor?label=download&color=2EBDAC)](https://github.com/lixiang0106/omlx-monitor/releases/latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ![oMLX Status HUD preview](docs/preview-en.svg)
@@ -19,7 +20,7 @@
 | Also called | oMLX 状态浮窗, oMLX monitor, oMLX HUD |
 | Runs on | macOS 13 Ventura or later; Apple Silicon recommended, tested on M5 Max |
 | Written in | Swift 5 with AppKit — no third-party dependencies, no package manager |
-| Install | `./build.sh`, then open `dist/oMLX Status HUD.app` |
+| Install | Download from [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest), or `./build.sh` |
 | Shows | tokens/s, generated tokens, prefill progress, active and waiting requests, process memory against soft and hard limits |
 | Data source | `GET http://127.0.0.1:<port>/admin/api/activity`, read-only, every 2 seconds |
 | Requires | oMLX running locally with its admin API enabled |
@@ -56,6 +57,20 @@ The HUD talks to `http://127.0.0.1:<port>/admin/api/activity`, reading the port 
 
 ## Install
 
+### Download (fastest)
+
+1. Download `oMLX-Status-HUD-1.1.0.zip` from [Releases](https://github.com/lixiang0106/omlx-monitor/releases/latest) and unzip it.
+2. Move `oMLX Status HUD.app` into `/Applications`.
+3. First launch: right-click the app → **Open**.
+
+**Gatekeeper note.** The app is ad-hoc signed rather than notarized, so macOS may say it cannot verify the developer. Either right-click → **Open** → **Open**, or clear the quarantine flag:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/oMLX Status HUD.app"
+```
+
+### Build from source
+
 ```bash
 git clone https://github.com/lixiang0106/omlx-monitor.git
 cd omlx-monitor
@@ -65,13 +80,7 @@ open "dist/oMLX Status HUD.app"
 
 The build takes a few seconds and runs an offline self-test before finishing. The result is a self-contained `.app` — no runtime dependencies, no separate icon assets to manage.
 
-**Gatekeeper note.** The app is ad-hoc signed rather than notarized. On first launch macOS may say it cannot verify the developer. Either right-click the app → **Open** → **Open**, or clear the quarantine flag:
-
-```bash
-xattr -dr com.apple.quarantine "dist/oMLX Status HUD.app"
-```
-
-Optional: drop the app into `/Applications` and add it to **System Settings → General → Login Items** if you want it to start with your Mac. The HUD does not install a launch agent on its own.
+Optional: add the app to **System Settings → General → Login Items** so it starts with your Mac. The HUD does not install a launch agent on its own.
 
 ## Usage
 
