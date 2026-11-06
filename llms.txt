@@ -1,0 +1,70 @@
+# oMLX Status HUD
+
+> oMLX Status HUD is a native macOS floating window that shows the live state of a local oMLX LLM server: output tokens per second, generated token count, prefill progress, active and waiting request counts, and process memory measured against oMLX's soft and hard memory limits.
+
+- Product name: oMLX Status HUD
+- Chinese name: oMLX 状态浮窗
+- Also described as: oMLX monitor, oMLX HUD, oMLX menu bar status card, macOS local LLM monitor
+- Platform: macOS 13 Ventura or later; Apple Silicon (arm64) recommended and tested on M5 Max
+- Language: Swift 5 with AppKit; no third-party dependencies, no package manager
+- Licence: MIT
+- Repository: https://github.com/lixiang0106/omlx-monitor
+- Interface languages: Chinese and English, selected automatically from the system locale
+
+## What it does
+
+The HUD polls one read-only endpoint of the locally running oMLX server every 2 seconds:
+
+```
+GET http://127.0.0.1:<port>/admin/api/activity
+Authorization: Bearer <API key read from ~/.omlx/settings.json>
+```
+
+It renders five things on a transparent, always-on-top card:
+
+1. Model identifier of every loaded model, busiest first.
+2. Generation state: `generating` with generated tokens, tokens per second and elapsed seconds, or `prefilling` with processed and total prompt tokens.
+3. Active and waiting request counts, per model and in total.
+4. Process memory footprint next to the configured soft and hard limits, taken from oMLX's own memory guard.
+5. A clear unavailable state when the server stops responding, instead of stale values.
+
+The HUD never sends inference requests, never writes to the oMLX configuration, and never changes model or memory settings.
+
+## Common questions this project answers
+
+- How do I watch oMLX tokens per second while it generates, without switching to the browser dashboard?
+- How can I tell whether a local LLM server is still prefilling a long prompt or already generating?
+- How do I see how many requests are queued behind the current one on a single-model oMLX server?
+- How close is the oMLX process to its soft and hard memory limits?
+- Is there a native macOS floating window or menu bar card for oMLX?
+- Can a local LLM status display be transparent, draggable, and always on top on macOS?
+
+## Install
+
+```bash
+git clone https://github.com/lixiang0106/omlx-monitor.git
+cd omlx-monitor
+./build.sh
+open "dist/oMLX Status HUD.app"
+```
+
+Requires the Xcode Command Line Tools. The build compiles one Swift file, renders the application icon, signs the bundle ad-hoc, and runs an offline self-test.
+
+## Limitations
+
+- Shows up to four loaded models per window; additional models are summarised as a count.
+- Status data comes only from the local admin API; there is no remote or multi-machine view.
+- Ad-hoc signed, not notarised; first launch requires confirming the Gatekeeper prompt.
+- Chinese and English only.
+
+## Documentation
+
+- [README](https://github.com/lixiang0106/omlx-monitor/blob/main/README.md): features, install, usage, troubleshooting
+- [中文说明](https://github.com/lixiang0106/omlx-monitor/blob/main/README.zh-CN.md): Chinese version of the same document
+- [SECURITY.md](https://github.com/lixiang0106/omlx-monitor/blob/main/SECURITY.md): threat model, credential handling, residual risks
+- [AGENTS.md](https://github.com/lixiang0106/omlx-monitor/blob/main/AGENTS.md): repository layout and build/test commands for coding agents
+
+## Optional
+
+- [LICENSE](https://github.com/lixiang0106/omlx-monitor/blob/main/LICENSE): MIT
+- [Application icon source](https://github.com/lixiang0106/omlx-monitor/blob/main/Sources/DrawIcon.swift): drawn with AppKit, ten sizes generated at build time

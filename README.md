@@ -11,6 +11,20 @@
 
 ![oMLX Status HUD preview](docs/preview-en.svg)
 
+## At a glance
+
+| | |
+| --- | --- |
+| What it is | A native macOS floating status card for a local oMLX server |
+| Also called | oMLX 状态浮窗, oMLX monitor, oMLX HUD |
+| Runs on | macOS 13 Ventura or later; Apple Silicon recommended, tested on M5 Max |
+| Written in | Swift 5 with AppKit — no third-party dependencies, no package manager |
+| Install | `./build.sh`, then open `dist/oMLX Status HUD.app` |
+| Shows | tokens/s, generated tokens, prefill progress, active and waiting requests, process memory against soft and hard limits |
+| Data source | `GET http://127.0.0.1:<port>/admin/api/activity`, read-only, every 2 seconds |
+| Requires | oMLX running locally with its admin API enabled |
+| Licence | MIT |
+
 ---
 
 ## Why
@@ -73,6 +87,32 @@ Optional: drop the app into `/Applications` and add it to **System Settings → 
 
 Because the card is transparent, light desktops can reduce contrast. Turning on the backdrop adds a dark, translucent panel behind the text; switching to dark text is also available for bright wallpapers.
 
+## FAQ
+
+**How do I watch oMLX tokens per second without switching browser tabs?**
+Run this HUD. It reads `/admin/api/activity` every 2 seconds and shows the current request's generated token count, tokens per second, and elapsed time directly on the desktop.
+
+**How can I tell whether the server is still prefilling a long prompt or already generating?**
+A prefilling request shows `Prefilling` with `processed / total` prompt tokens and a prefill speed. Once decoding starts, the same row switches to `Generating` with output tokens and tokens per second. The two phases look different on purpose.
+
+**How many requests are queued behind the current one?**
+Each model row carries an active and waiting count, and the header carries the totals. With the scheduler concurrency of 1 observed on our machine, a waiting count above zero means your request is behind someone else's.
+
+**How close is oMLX to its soft and hard memory limits?**
+The bottom row shows the oMLX process footprint next to the limits its memory guard is enforcing — for example `74.6GB / soft 90.0GB / hard 97.0GB`. These are the same values that drive eviction, not a separate estimate.
+
+**Does it change my models, sampling settings, or memory limits?**
+No. The app only issues `GET` requests. It never writes to the oMLX configuration and never loads or unloads a model.
+
+**Where does the API key come from, and is it stored?**
+It is read from `~/.omlx/settings.json` at request time, used for a single request to `127.0.0.1`, and never written to disk, logged, or shown on screen. Redirects are refused so it cannot be forwarded elsewhere.
+
+**Can I change the size, font, or language?**
+Yes. The **⋯** menu offers four widths (340–680 pt), four text sizes (10–16 pt), a compact row mode, and a language switch between 中文 and English. The height follows the content, and the position is remembered.
+
+**What is the difference from the oMLX web dashboard?**
+The dashboard lives in a browser tab and answers the same questions after a context switch. This HUD keeps a small card pinned above other windows, including across Spaces and full-screen apps, so the numbers stay in peripheral vision. It is a complement, not a replacement.
+
 ## How it works
 
 Every 2 seconds the app issues a single read-only request:
@@ -122,6 +162,8 @@ dist/"oMLX Status HUD.app"/Contents/MacOS/OMLXMonitor --gui-diagnostic   # windo
 ```
 
 There is deliberately no package manager, no third-party dependency, and no build system beyond `swiftc`.
+
+A machine-readable project summary lives in [`llms.txt`](llms.txt); build and verification instructions aimed at coding agents live in [`AGENTS.md`](AGENTS.md).
 
 ## Limitations
 
